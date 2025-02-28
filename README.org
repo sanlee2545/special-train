@@ -3,3 +3,4 @@
   know what's inside it.
 - Org file of write up for EuroSAT project.
 - Python file with code.
+- README org file.
