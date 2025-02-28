@@ -1,4 +1,5 @@
 * Repository contents
-- HTML version of org file.
+- HTML version of org file. This is just an HTML export so I don't
+  know what's inside it.
 - Org file of write up for EuroSAT project.
 - Python file with code.
