@@ -5,15 +5,19 @@ called "EuroSAT: A Novel Dataset and Deep Learning Benchmark for Land
 Use and Land Cover Classification" [[https://github.com/phelber/EuroSAT][here]]. Basically we will copy the
 method of the paper.
 
-We will use the pretrained base ResNet-50 and other goodies from
-Keras like callbacks and data augmentation layers. We also use
-Matplotlib for basic plots and NumPy for data structures.
+We will use the pretrained base ~resnet50~ and other goodies from
+~keras~ like callbacks and data augmentation layers. We also use
+~matplotlib~ for basic plots and ~numpy~ for data structures.
 
-An outline of the program (about 150 lines of Python code) :
-- Import statements.
+An outline of the program (about 150 lines of ~python~ code) :
+- ~import~ statements.
 - Define some functions for repetitive things.
 - ~main()~ function that has the main thought process of training the
   model.
+
+We used [[https://colab.research.google.com][Google Colab]] to run these experiments because we do not have
+GPU access on our personal computer. We paid for the Pro option
+because the free option is unreliable.
 
 The EuroSAT dataset is a collection of 27.000 satellite images taken
 above European countries. Every image is 64 by 64 pixels and every
@@ -69,7 +73,8 @@ from keras.layers import (Dense, Dropout, Flatten, IntegerLookup,
 #+end_src
 ~CategoricalCrossentropy~ is our loss function and
 ~CategoricalAccuracy~ is our metric which we track. We use the ~Adam~
-optimizer but any optimizer can be used.
+optimizer but any optimizer can be used as long as the relevant
+parameters are adjusted.
 #+begin_src python
 from keras.losses import CategoricalCrossentropy
 from keras.metrics import CategoricalAccuracy
@@ -100,7 +105,7 @@ possible outputs. There are eleven outputs and not ten because the
 outside the vocabulary.
 
 The ~param_dict~ argument will be defined later as a dictionary of
-tunable parameters. At the moment there is only one parameter : ~"lr"~
+tunable parameters. At the moment there is only one parameter, ~"lr"~,
 or learning rate.
 #+begin_src python
   def build_model(param_dict, base):
@@ -161,7 +166,9 @@ This function makes the plots and labels the axes. We want to know
 about loss and accuracy during training and validation. There is a
 ~start_at~ variable which tells the plot to skip the first few
 values because the first few values are usually much smaller than the
-later ones.
+later ones. Training loss and accuracy are blue dots and validation
+loss and accuracy are blue x's. We use two different shapes to make
+sure colorblind people can interpret the plots.
 #+begin_src python
   def plot(history):
       acc = history.history["categorical_accuracy"]
@@ -194,6 +201,14 @@ later ones.
 
 #+end_src
 * Main
+A rough outline of the ~main()~ function :
+- Get EuroSAT dataset.
+- Get ~resnet50~ pretrained base.
+- One-hot-encode labels.
+- Train top layers of model.
+- Fine-tune whole model.
+- Get predictions on test data.
+- And other housekeeping items scattered here and there.
 The ~main()~ function calls the shots.
 #+begin_src python
 def main():
@@ -275,11 +290,21 @@ indentation level.
 #+end_src
 * Conclusions
 At this point after running the program a few times we see that our
-model gets about 96% test accuracy. We may do some further analysis
-with a confusion matrix or something else to figure out which images
-we are still misclassifying. The benchmark from the paper is about
-98.5% test accuracy with an 80-20 split using the ~resnet50~ base. We
-are satisfied for now with 96%.
+model gets about 96% test accuracy. The plots for accuracy and loss
+show that our training process is pretty sound. We may do some further
+analysis with a confusion matrix or something else to figure out which
+images we are still misclassifying. The benchmark from the paper is
+about 98.5% test accuracy with an 80-20 split using the ~resnet50~
+base. We are satisfied for now with 96%.
+* Plots
+#+CAPTION: Loss when training top few layers.
+[[./train-loss.png]]
+#+CAPTION: Accuracy when training top few layers.
+[[./train-acc.png]]
+#+CAPTION: Loss when fine-tuning whole model.
+[[./finetune-loss.png]]
+#+CAPTION: Accuracy when fine-tuning whole model.
+[[./finetune-acc.png]]
 * References
 - Helber, Patrick and others, "EuroSAT: A Novel Dataset and Deep
   Learning Benchmark for Land Use and Land Cover Classification",
