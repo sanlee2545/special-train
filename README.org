@@ -1,6 +1,6 @@
-* Repository contents
-- HTML version of org file. This is just an HTML export so I don't
-  know what's inside it. [[https://sanlee2545.github.io/special-train/][Link]].
-- Org file of write up for EuroSAT project.
-- Python file with code.
-- README org file.
+* Image Classification Project Using the EuroSAT Dataset
+** Repository contents
+- ~index.html~ : HTML version of org file.
+- ~eurosat.org~ : Org file of write up for EuroSAT project. Contains
+  all code from ~eurosat.py~ and adds writing to that.
+- ~eurosat.py~ : Python file with code.
