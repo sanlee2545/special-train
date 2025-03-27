@@ -298,13 +298,13 @@ about 98.5% test accuracy with an 80-20 split using the ~resnet50~
 base. We are satisfied for now with 96%.
 * Plots
 #+CAPTION: Loss when training top few layers.
-[[./train-loss.png]]
+[[./images/train-loss.png]]
 #+CAPTION: Accuracy when training top few layers.
-[[./train-acc.png]]
+[[./images/train-acc.png]]
 #+CAPTION: Loss when fine-tuning whole model.
-[[./finetune-loss.png]]
+[[./images/finetune-loss.png]]
 #+CAPTION: Accuracy when fine-tuning whole model.
-[[./finetune-acc.png]]
+[[./images/finetune-acc.png]]
 * References
 - Helber, Patrick and others, "EuroSAT: A Novel Dataset and Deep
   Learning Benchmark for Land Use and Land Cover Classification",
