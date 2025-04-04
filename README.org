@@ -1,5 +1,6 @@
 * Image Classification Project Using the EuroSAT Dataset
 ** Repository Contents
+- ~.gitignore~ : Git ignore file.
 - ~README.org~ : Read me file.
 - ~eurosat.org~ : Org file of write up for EuroSAT project. Contains
   all code from ~eurosat.py~ and adds writing to that.
